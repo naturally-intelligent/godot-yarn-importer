@@ -22,7 +22,7 @@ This would be some text for choice A path.
 title: choice-b
 tags: 
 colorID: 0
-position: 897,331
+position: 910,384
 ---
 This is text for example choice B.
 Think you can get back to the start?
@@ -32,12 +32,38 @@ Think you can get back to the start?
 title: choice-c
 tags: 
 colorID: 0
-position: 573,498
+position: 574,498
 ---
 This is text for Example Choice C.
 Exciting huh?
 [[Example Choice A|choice-a]]
 [[Example Choice B|choice-b]]
 [[Example Choice C|choice-c]]
+[[Variable Replace|replace]]
+[[Code Node|code-example]]
 [[Back to Start|start]]
+===
+title: replace
+tags: 
+colorID: 0
+position: 849,665
+---
+Variable Replace Demo!
+First Name: $PlayerFirst
+Last Name: $PlayerLast
+Full Nane: $PlayerFull
+[[Back to Start|start]]
+===
+title: code:code-example
+tags: 
+colorID: 0
+position: 214,663
+---
+say("Let's run some code!")
+print('A print statement to console.')
+if game.data['first'] == 'Dave':
+    say('Is your name is Dave?')
+else:
+    say('Is your name ' +game.data['first'] + '?')
+[[start]]
 ===

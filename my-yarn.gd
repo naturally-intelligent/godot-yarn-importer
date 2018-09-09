@@ -7,6 +7,8 @@ extends "res://yarn/yarn-importer.gd"
 # It is easier to just tie "yarn-importer" directly into your scene,
 #  but in time you will likely reuse this class many times, 
 #  and it can grow overly complicated merged in your scene
+# You might also have multiple types of story GUIs, 
+#  then you'd want one of these for each type of GUI
 
 var scene
 var dialog
@@ -44,19 +46,3 @@ func yarn_custom_logic(to):
 		game.counters[to] = 0
 	game.counters[to] = game.counters[to] + 1
 	scene.set_visit_label("STATS: You've visited '"+to+"' "+str(game.counters[to])+" times.")
-	
-func yarn_code_replace(code, parent='parent.', next_func="yarn_unravel"):
-	code = .yarn_code_replace(code, parent, next_func)
-	# replace convenience variables (examples)
-	code = code.replace('if stage', "if game.data['stage']")
-	code = code.replace("action(", parent+"action(")
-	if code.find("fact['") != -1:
-		if code.find("==") != -1:
-			code = code.replace("fact['", "game.world_fact('")
-			code = code.replace("']", "')")
-		elif code.find("=") != -1:
-			code = code.replace("fact['", "game.set_world_fact('")
-			code = code.replace("'] = ", "', ")
-			code = code + ")"
-	return code
-	

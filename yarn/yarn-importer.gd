@@ -10,9 +10,9 @@ extends Node
 # Yarn: https://github.com/InfiniteAmmoInc/Yarn
 # Twine: http://twinery.org
 # 
-# Yarn: a ball of yarn threads
-# Thread: a series of fibres
-# Fibre: a text or choice or logic
+# Yarn: a ball of threads (Yarn file)
+# Thread: a series of fibres (Yarn node)
+# Fibre: a text or choice or logic (Yarn line)
 
 var yarn = {}
 
@@ -101,12 +101,10 @@ func new_yarn_fibre(line):
 			#print(line, split[0], split[1])
 			return fibre
 	# text fibre
-	else:
-		var fibre = {}
-		fibre['kind'] = 'text'
-		fibre['text'] = line
-		return fibre
-	return false
+	var fibre = {}
+	fibre['kind'] = 'text'
+	fibre['text'] = line
+	return fibre
 
 # Create Yarn data structure from file (must be *.yarn.txt Yarn format)
 func load_yarn(path):
@@ -124,7 +122,7 @@ func load_yarn(path):
 		# loop
 		while !file.eof_reached():
 			# read a line
-			var line = file.get_line().strip_edges(true, true)
+			var line = file.get_line()
 			# header read mode
 			if header:
 				if line == '---':
@@ -198,6 +196,10 @@ func yarn_code(title, run=true, parent='parent.', tabs="\t", next_func="yarn_unr
 					var line = yarn_text_variables(fibre['text'])
 					line = yarn_code_replace(line, parent, next_func)
 					code += tabs + line + "\n"
+				'choice':
+					var line = parent+next_func+"('"+fibre['marker']+"')"
+					print(line)
+					code += tabs + line + "\n"
 		if run:
 			run_yarn_code(code)
 		else:
@@ -219,13 +221,13 @@ func run_yarn_code(code):
 	front += "func dynamic_code():\n"
 	front += "\tvar parent = get_parent()\n\n"
 	code = front + code
-	print("CODE BLOCK: \n", code)
+	#print("CODE BLOCK: \n", code)
 
 	var script = GDScript.new()
 	script.set_source_code(code)
 	script.reload()
 
-	print("Executing code...")
+	#print("Executing code...")
 	var node = Node.new()
 	node.set_script(script)
 	add_child(node)
