@@ -1,0 +1,27 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
+[application]
+
+config/name="Yarn Importer"
+run/main_scene="res://YarnExample.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+game="*res://game.gd"
+
+[display]
+
+window/size/width=900
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

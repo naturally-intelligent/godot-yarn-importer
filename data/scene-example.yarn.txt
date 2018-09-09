@@ -1,0 +1,43 @@
+title: start
+tags: 
+colorID: 0
+position: 567,90
+---
+Welcome to Godot Yarn Importer!
+Included is a simple class to load a "*.yarn.txt" file.
+With that, you'll get a data structure you can use to run dialog+choices branches for interactive stories.
+[[Example Choice A|choice-a]]
+[[Example Choice B|choice-b]]
+===
+title: choice-a
+tags: 
+colorID: 0
+position: 221,330
+---
+You've chosen choice A!
+This would be some text for choice A path.
+[[Example Choice B|choice-b]]
+[[Example Choice C|choice-c]]
+===
+title: choice-b
+tags: 
+colorID: 0
+position: 897,331
+---
+This is text for example choice B.
+Think you can get back to the start?
+[[Example Choice A|choice-a]]
+[[Example Choice C|choice-c]]
+===
+title: choice-c
+tags: 
+colorID: 0
+position: 573,498
+---
+This is text for Example Choice C.
+Exciting huh?
+[[Example Choice A|choice-a]]
+[[Example Choice B|choice-b]]
+[[Example Choice C|choice-c]]
+[[Back to Start|start]]
+===
