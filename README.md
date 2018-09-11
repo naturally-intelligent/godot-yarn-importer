@@ -3,11 +3,10 @@ A Yarn Importer for Godot 3+
 
 ![Screenshot](https://i.imgur.com/WRtQUJl.png)
 
-# Yarn / Twine
+# Yarn
 
 Based on:
 - Yarn: https://github.com/InfiniteAmmoInc/Yarn
-- Twine: http://twinery.org/
 
 ![Screenshot](https://i.imgur.com/OJ95pvr.png)
 
