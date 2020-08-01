@@ -284,7 +284,7 @@ func print_gdscript_to_console():
 	print(export_to_gdscript())
 
 func save_to_gdscript(filename):
-	var script = export_to_gdscript(filename)
+	var script = export_to_gdscript()
 	# write to file
 	var file = File.new()
 	file.open(filename, file.WRITE)
